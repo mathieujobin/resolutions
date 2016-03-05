@@ -47,6 +47,9 @@
       css_hash['class'] = 'fullhd';
     } else if (resolutions[i]['lines'] < 1080) {
       css_hash['class'] = 'under_hd';
+      css_hash['right'] = '1300px';
+//       css_hash['left'] = '10px';
+//       css_hash['top'] = (1+i*10)+'px';
       css_hash['border'] = '0.5px solid red';
     } else {
       css_hash['class'] = 'hd_and_larger';
