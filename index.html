@@ -1,6 +1,7 @@
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
 <body></body>
 <script>
@@ -29,7 +30,9 @@
     {columns: 5120, lines: 2880, name: '5K'}
   ];
 
-  for (var i = resolutions.length - 1; i >= 0 ; i--) {
+  for (var i = resolutions.length - 1; i >= 0 ; i--) { // ALL
+  //for (var i = resolutions.length - 1; i >= 11 ; i--) {   // HD and Above
+  //for (var i = 11; i >= 0 ; i--) {   // HD or Less
 
     var css_hash = {
       display: 'block',
@@ -40,12 +43,20 @@
       border: '0.5px solid green',
       'background-color': '#fff'
     }
-//     if (resolutions[i]['lines'] < 1080) {
+    if (resolutions[i]['lines'] == 1080) {
+      css_hash['class'] = 'fullhd';
+    } else if (resolutions[i]['lines'] < 1080) {
+      css_hash['class'] = 'under_hd';
+      css_hash['border'] = '0.5px solid red';
+    } else {
+      css_hash['class'] = 'hd_and_larger';
+    }
+
 //       css_hash['transform'] = 'rotate(90deg)';
 //       css_hash['transform-origin'] = 'left top 0';
-//       css_hash['border'] = '0.5px solid red';
-//     }
-    $('<span class="square">'+resolutions[i]['name']+'</span>').css(css_hash).appendTo($("body"));
+
+    var box = $('<span class="square">'+resolutions[i]['name']+'</span>').css(css_hash).draggable();
+    box.appendTo($("body"));
   }
 </script>
 </html>
