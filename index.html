@@ -1,0 +1,51 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+</head>
+<body></body>
+<script>
+  var resolutions = [
+    {columns: 320, lines: 240, name: '480i'},
+    {columns: 640, lines: 480, name: 'VGA & 480p'},
+    {columns: 800, lines: 600, name: 'SVGA'},
+    {columns: 800, lines: 480, name: '?? wide-VGA'},
+    {columns: 1024, lines: 600, name: '??'},
+    {columns: 1024, lines: 768, name: '??'},
+    {columns: 1366, lines: 768, name: '??'},
+    {columns: 1440, lines: 900, name: '...'},
+    {columns: 1600, lines: 900, name: '...'},
+    {columns: 1280, lines: 1024, name: '...'},
+    {columns: 1680, lines: 1050, name: '...'},
+    {columns: 1920, lines: 1080, name: 'Full HD 1080p'},
+    {columns: 1440, lines: 1080, name: '...'},
+    {columns: 1600, lines: 1200, name: 'xxGA'},
+    {columns: 1920, lines: 1200, name: 'xxGA'},
+    {columns: 2560, lines: 1080, name: '2K Wide-FHD'},
+    {columns: 2560, lines: 1440, name: '2K Wide-1440'},
+    {columns: 2560, lines: 1600, name: '2K Wide-1600'},
+    {columns: 3440, lines: 1440, name: '2K UltraWide-1440'},
+    {columns: 3840, lines: 2160, name: '4K short'},
+    {columns: 4096, lines: 2160, name: '4K real'},
+    {columns: 5120, lines: 2880, name: '5K'}
+  ];
+
+  for (var i = resolutions.length - 1; i >= 0 ; i--) {
+
+    var css_hash = {
+      display: 'block',
+      position: 'absolute',
+      width: resolutions[i]['columns'] / 4,
+      height: resolutions[i]['lines'] / 4,
+      top: '10px', right: '10px',
+      border: '0.5px solid green',
+      'background-color': '#fff'
+    }
+//     if (resolutions[i]['lines'] < 1080) {
+//       css_hash['transform'] = 'rotate(90deg)';
+//       css_hash['transform-origin'] = 'left top 0';
+//       css_hash['border'] = '0.5px solid red';
+//     }
+    $('<span class="square">'+resolutions[i]['name']+'</span>').css(css_hash).appendTo($("body"));
+  }
+</script>
+</html>
